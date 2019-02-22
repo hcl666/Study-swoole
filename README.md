@@ -1,4 +1,4 @@
-ThinkPHP 5.0
+使用ThinkPHP 5.0学习swoole
 ===============
 
 [![Total Downloads](https://poser.pugx.org/topthink/think/downloads)](https://packagist.org/packages/topthink/think)
@@ -58,6 +58,7 @@ www  WEB部署目录（或者子目录）
 │  ├─router.php         快速测试文件
 │  └─.htaccess          用于apache的重写
 │
+├─server                服务端目录
 ├─thinkphp              框架系统目录
 │  ├─lang               语言文件目录
 │  ├─library            框架类库目录
