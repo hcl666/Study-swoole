@@ -3,6 +3,8 @@
 namespace app\common\lib\task;
 
 use app\common\lib\ali\Sms;
+use app\common\lib\Redis;
+use app\common\lib\Predis;
 
 class Task
 {
@@ -12,9 +14,9 @@ class Task
 			$send_code = Sms::sendShortMessage($data['phone'], $data['sms_code']);
         } catch (\Exception $e) {
         	// TODO
-        	echo $e->getMessage();
+        	return false;
         }
 
-        print_r($data);
+        return true;
 	}
 }

@@ -2,6 +2,8 @@
 
 namespace app\common\lib;
 
+use think\Config;
+
 class Predis
 {
 	public $redis = null;
@@ -36,8 +38,8 @@ class Predis
 	private function __construct()
 	{
 		$this->redis = new \Redis();
-		$this->redis->connect(config('redis.host'), config('redis.port'), config('redis.time_out'));
-		$result = $this->redis->auth(config('redis.password'));
+		$this->redis->connect(Config::get('redis.host'), Config::get('redis.port'), Config::get('redis.time_out'));
+		$result = $this->redis->auth(Config::get('redis.password'));
 
 		if (!$result) {
 			throw new Exception('redis connect error');

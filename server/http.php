@@ -35,6 +35,7 @@ class Http
 		// ThinkPHP 引导文件
 		// 1. 加载基础文件
 		require __DIR__ . '/../thinkphp/base.php';
+		// require __DIR__ . '/../thinkphp/start.php';
 	}
 
 	public function onRequest($request, $response)
@@ -58,7 +59,8 @@ class Http
 	public function onTask($server, $task_id, $worker_id, $data)
 	{
 		$task_obj = new app\common\lib\task\Task();
-		$task_obj->$data['method']($data['data']);
+		$method = $data['method'];
+		$task_obj->$method($data['data']);
 		return 'on task finish';
 	}
 
@@ -81,6 +83,9 @@ class Http
 
 		try{
 			think\App::run()->send();
+			// think\Container::get('app', [APP_PATH])
+			// 	->run()
+			// 	->send();
 		} catch(\Exception $e) {
 			throw $e;
 		}
